@@ -1,18 +1,24 @@
-# localtuya-device-datapoints
-List of data points for various Tuya devices, required to setup localtuya integration.
+# LocalTuya Device Datapoints
 
-Data points can be obtained by 
-1. logging into the Tuya IoT Platform
+Early 2023, adding/configuring Tuya devices in the Home Assistant [LocalTuya](https://github.com/rospogrigio/localtuya) community add-on is (still) a rather confusing process. Adding a device involves manually configuring properties using Data Points, which are the properties a Tuya device exposes through its local API.  
+
+These properties do not advertise themselves using a friendly name or data type, but as numbers. Finding what property these DPs represent is quite cumbersome, hence I created this repo to remind me of this process and also include the DPs for several of my Tuya devices to save future me from having to look them up (again).
+
+## Obtaining data points for your Tuya device
+
+
+1. Login to the [Tuya IoT Platform](https://iot.tuya.com/)
 2. Select '**Cloud**' > '**Development**' from the menu
 3. Select your project
 4. Goto '**Devices**'
 5. Click **Debug device** in the *Operations* column
-6. Select 'Device Logs' tab
+6. Select '**Device Logs**' tab
 7. Open the browser Developer Tools (F12) and open the Network tab
-8. Select a DP from the 'Select DP ID' dropdown
-9. Hit 'Search'
+8. Select a DP from the '**Select DP ID**' dropdown
+9. Hit '**Search**'
 
-In the background a network request will be done, available as list in the network calls overview. Select that request and open the 'Payload' tab.
+In the background a network request will be done, available as `'list'` in the network calls overview.  
+Select that request and open the 'Payload' tab.
 
 The payload will look similar to this:
 ```json
@@ -32,8 +38,13 @@ The payload will look similar to this:
 }
 ```
 
-The `"code"` value is your DP ID. In this case `2`, which translates to the `'Switch 2'` the relay for socket #2 of the SHP5 smart socket.
+The `"code"` value is your DP ID. In this case `2`, which translates to the `'Switch 2'` the relay for socket #2 of the *Blitzwolf SHP7* smart socket.
 
+Once the device has been selected, the flow will be like this:
+
+![Get DataPoint ID from Tuya IoT portal device debug](media/get-dp-ids-from-tuya-iot-portal.png)
+
+# Device DPs
 
 ## Blitzwolf SHP5
 
