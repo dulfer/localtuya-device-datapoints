@@ -1,11 +1,18 @@
 # LocalTuya Device Datapoints
 
-Early 2023, adding/configuring Tuya devices in the Home Assistant [LocalTuya](https://github.com/rospogrigio/localtuya) community add-on is (still) a rather confusing process. Adding a device involves manually configuring properties using Data Points, which are the properties a Tuya device exposes through its local API.  
+> *Notes:*  
+> A [Tuya IoT ](https://iot.tuya.com/) project **must** be created for this to work  
+> Tuya device authorization can expire, which will result in errors in Home Assistant
+> (Presumably) the Tuya app on the smart phone needs to be closed for this process to work reliably
 
-These properties do not advertise themselves using a friendly name or data type, but as numbers. Finding what property these DPs represent is quite cumbersome, hence I created this repo to remind me of this process and also include the DPs for several of my Tuya devices to save future me from having to look them up (again).
+Early 2023, adding/configuring Tuya devices in the Home Assistant [LocalTuya](https://github.com/rospogrigio/localtuya) community add-on is (still) a rather confusing process. Adding a device involves manually configuring the Data Points, which are the properties like relays and power consumption a Tuya device exposes through its local API.  
+
+These properties do not advertise themselves as a friendly name or data type, but as numbers. Finding what property these DPs represent is quite cumbersome, hence I created this repo to remind me of this process and also include the DPs for several of my Tuya devices to save future me from having to look them up (again).
+
+> **2023-01-04**:
+> I found and included a table containing known [🔗DPs for Tuya v3.3 devices](#tuya-v33-dps)
 
 ## Obtaining data points for your Tuya device
-
 
 1. Login to the [Tuya IoT Platform](https://iot.tuya.com/)
 2. Select '**Cloud**' > '**Development**' from the menu
@@ -21,6 +28,7 @@ In the background a network request will be done, available as `'list'` in the n
 Select that request and open the 'Payload' tab.
 
 The payload will look similar to this:
+
 ```json
 {
   "startRowId": "",
@@ -46,6 +54,10 @@ Once the device has been selected, the flow will be like this:
 
 # Device DPs
 
+> Some clarification of DPs:   
+> **Add Electricity** = Power consumption since last report  
+> **... coe** = ... coefficient
+
 ## Blitzwolf SHP5
 
 | DP  | Description        | Value        |
@@ -59,13 +71,11 @@ Once the device has been selected, the flow will be like this:
 | 19  | Power              | 0-5000 W     |
 | 20  | Voltage            | 0-50000 V    |
 | 21  | Test Bit           |              |
-| 22  | Voltage coe        |              |
-| 23  | Electric coe       |              |
-| 24  | Power coe          |              |
-| 25  | Electricity coe    |              |
+| 22  | Voltage coe        | 0-1000000    |
+| 23  | Electric coe       | 0-1000000    |
+| 24  | Power coe          | 0-1000000    |
+| 25  | Electricity coe    | 0-1000000    |
 | 26  | Fault              |              |
-
-> **Add Electricity** = Power consumption since last report
 
 ## Blitzwolf SHP7
 
@@ -80,10 +90,10 @@ Once the device has been selected, the flow will be like this:
 | 19  | Power              | 0-5000 W                             |
 | 20  | Voltage            | 0-50000 V                            |
 | 21  | Test bit           |                                      |
-| 22  | Voltage coe        |                                      |
-| 23  | Electric coe       |                                      |
-| 24  | Power coe          |                                      |
-| 25  | Electricity coe    |                                      |
+| 22  | Voltage coe        | 0-1000000                            |
+| 23  | Electric coe       | 0-1000000                            |
+| 24  | Power coe          | 0-1000000                            |
+| 25  | Electricity coe    | 0-1000000                            |
 | 38  | Relay Status       | { "power_off", "power_on",  "last" } |
 | 39  | Indicator Light    | { "none", "relay", "pos" }           |
 | 40  | Child Lock         | {true,false}                         |
@@ -103,10 +113,14 @@ Once the device has been selected, the flow will be like this:
 }
 ```
 
+---
+
 ## Tuya v3.3 DPs
 
 List of DPs for Tuya v3.3 devices.  
-Reference: https://pypi.org/project/tinytuya/
+Table contains the DPs that a device *may* expose. In general it is a useful lookup table to identify the DPs read by LocalTuya.
+
+Source: 🔗 https://pypi.org/project/tinytuya/
 
 | DP ID | Function Point     | Type    | Range	Units                   |
 | ----- | ------------------ | ------- | ----------------------------- |
