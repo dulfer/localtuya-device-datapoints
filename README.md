@@ -18,9 +18,10 @@ These properties do not advertise themselves as a friendly name or data type, bu
 2. Select '**Cloud**' > '**Development**' from the menu
 3. Select your project
 4. Goto '**Devices**'
-5. Click **Debug device** in the *Operations* column
+5. Click **Debug device** in the *Operations* column  
+*💡 hidden if viewport is too narrow*
 6. Select '**Device Logs**' tab
-7. Open the browser Developer Tools (F12) and open the Network tab
+7. Open the browser Developer Tools (EDGE:F12) and open the Network tab
 8. Select a DP from the '**Select DP ID**' dropdown
 9. Hit '**Search**'
 
@@ -58,7 +59,46 @@ Once the device has been selected, the flow will be like this:
 > **Add Electricity** = Power consumption since last report  
 > **... coe** = ... coefficient
 
+## Generic 2 Button Wall Switch
+
+Advertised as **SWITCH2**
+
+| DP  | Description        | Value        |
+| --- | ------------------ | ------------ |
+| 1   | Switch 1           | {true,false} |
+| 7   | Switch 2 (USB)     | {true,false} |
+| 9   | Countdown Switch 1 | 0-86400 s    |
+| 15  | Countdown Switch 2 | 0-86400 s    |
+
+## Blitzwolf SHP2
+
+> [BW-SHP2](media/blitzwolf_bw-shp2.jpg): Wifi Smart Socket 16A with power monitoring  
+> Also sold as **Gosund SP1** and **Tecking SP22**
+
+| DP  | Description      | Value                                |
+| --- | ---------------- | ------------------------------------ |
+| 1   | Switch           | {true,false}                         |
+| 9   | Countdown Switch | 0-86400 s                            |
+| 17  | Add Electricity* | 0-50000 kWh                          |
+| 18  | Current          | 0-30000 mA                           |
+| 19  | Power            | 0-5000 W                             |
+| 20  | Voltage          | 0-50000 V                            |
+| 21  | Test bit         |                                      |
+| 22  | Voltage coe      | 0-1000000                            |
+| 23  | Electric coe     | 0-1000000                            |
+| 24  | Power coe        | 0-1000000                            |
+| 25  | Electricity coe  | 0-1000000                            |
+| 38  | Relay Status     | { "power_off", "power_on",  "last" } |
+| 39  | Indicator Light  | { "none", "relay", "pos" }           |
+| 40  | Child Lock       | {true,false}                         |
+| 41  | Cycle Time       |                                      |
+| 42  | Random Time      |                                      |
+| 43  | Inching Switch   | ???                                  |
+
 ## Blitzwolf SHP5
+
+> [BW-SHP5](media/blitzwolf_bw-shp5.jpg): Wifi Smart Socket 16A with power monitoring, has 2 USB ports that can be switched separate from the main socket.  
+> Also sold as **Gosund SP112**
 
 | DP  | Description        | Value        |
 | --- | ------------------ | ------------ |
@@ -78,6 +118,9 @@ Once the device has been selected, the flow will be like this:
 | 26  | Fault              |              |
 
 ## Blitzwolf SHP7
+
+> [BW-SHP7](media/bitzwolf_bw-shp7.jpg): Dual smart socket with power monitoring.  
+> Also sold as **Gosund SP211**
 
 | DP  | Description        | Value                                |
 | --- | ------------------ | ------------------------------------ |
@@ -101,6 +144,34 @@ Once the device has been selected, the flow will be like this:
 | 42  | Random Time        |                                      |
 | 43  | Inching Switch     |                                      |
 
+## LSC Ceiling Lamp-RGBCW
+
+> Also sold by Livarno (LIDL)
+
+ | DP  | Description           | Value                                   |
+ | --- | --------------------- | --------------------------------------- |
+ | 1   | Switch                | {true,false}                            |
+ | 21  | Mode                  | { "white", "colour", "scene", "music" } |
+ | 22  | Brightness            | 0-1000                                  |
+ | 23  | Colour Temperature    | 0-1000                                  |
+ | 24  | Colour                | { h [0-360], s [0-1000], v [0-1000] }   |
+ | 25  | Scene                 | *complex datamodel*                     |
+ | 41  | Remote Control Switch | {true,false}                            |
+ | 26  | Countdown             | 0-86400 s                               |
+ | 28  | Debugger              | { h [0-360], s [0-255], v [0-255] }     |
+
+## Generic Smoke Detector (WiFi)
+
+| DP  | Description           | Value                       |
+| --- | --------------------- | --------------------------- |
+| 16  | Silence               | {true,false}                |
+| 1   | Smoke Detection State | { "alarm", "normal" }       |
+| 2   | Smoke Sensor          | 0-100                       |
+| 11  | Fault Alarm           |                             |
+| 14  | Battery Level State   | { "low", "middle", "high" } |
+| 15  | Battery Level         | 0-100 %                     |
+| 101 | User Test             |                             |
+
 ### CountdownObject
 
 ```json
@@ -113,6 +184,73 @@ Once the device has been selected, the flow will be like this:
 }
 ```
 
+### Scene Data (LED)
+
+```json
+{
+  "scene_num": {
+    "min": 1,
+    "scale": 0,
+    "max": 8,
+    "step": 1
+  },
+  "scene_units": {
+    "unit_change_mode": {
+      "range": [
+        "static",
+        "jump",
+        "gradient"
+      ]
+    },
+    "unit_switch_duration": {
+      "min": 0,
+      "scale": 0,
+      "max": 100,
+      "step": 1
+    },
+    "unit_gradient_duration": {
+      "min": 0,
+      "scale": 0,
+      "max": 100,
+      "step": 1
+    },
+    "bright": {
+      "min": 0,
+      "scale": 0,
+      "max": 1000,
+      "step": 1
+    },
+    "temperature": {
+      "min": 0,
+      "scale": 0,
+      "max": 1000,
+      "step": 1
+    },
+    "h": {
+      "min": 0,
+      "scale": 0,
+      "unit": "",
+      "max": 360,
+      "step": 1
+    },
+    "s": {
+      "min": 0,
+      "scale": 0,
+      "unit": "",
+      "max": 1000,
+      "step": 1
+    },
+    "v": {
+      "min": 0,
+      "scale": 0,
+      "unit": "",
+      "max": 1000,
+      "step": 1
+    }
+  }
+}
+```
+
 ---
 
 ## Tuya v3.3 DPs
@@ -122,7 +260,7 @@ Table contains the DPs that a device *may* expose. In general it is a useful loo
 
 Source: 🔗 https://pypi.org/project/tinytuya/
 
-| DP ID | Function Point     | Type    | Range	Units                   |
+| DP ID | Function Point     | Type    | Range Units                   |
 | ----- | ------------------ | ------- | ----------------------------- |
 | 1     | Switch 1           | bool    | True/False                    |
 | 2     | Switch 2           | bool    | True/False                    |
@@ -147,7 +285,7 @@ Source: 🔗 https://pypi.org/project/tinytuya/
 | 23    | Current coeff.     | integer | 0-1000000                     |
 | 24    | Power coeff.       | integer | 0-1000000                     |
 | 25    | Electricity coeff. | integer | 0-1000000                     |
-| 26    | Fault	fault	ov_cr  |         |                               |
+| 26    | Fault              | fault   | ov_cr                         |
 | 38    | Power-on state     | setting | enum { off, on, memory }      |
 | 39    | Overcharge Switch  | bool    | True/False                    |
 | 40    | Indicator status   | setting | enum { none, on, relay, pos } |
