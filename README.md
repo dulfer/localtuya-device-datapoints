@@ -66,7 +66,7 @@ Advertised as **SWITCH2**
 | DP  | Description        | Value        |
 | --- | ------------------ | ------------ |
 | 1   | Switch 1           | {true,false} |
-| 7   | Switch 2 (USB)     | {true,false} |
+| 2   | Switch 2           | {true,false} |
 | 9   | Countdown Switch 1 | 0-86400 s    |
 | 15  | Countdown Switch 2 | 0-86400 s    |
 
@@ -125,7 +125,7 @@ Advertised as **SWITCH2**
 | DP  | Description        | Value                                |
 | --- | ------------------ | ------------------------------------ |
 | 1   | Switch 1           | {true,false}                         |
-| 7   | Switch 2 (USB)     | {true,false}                         |
+| 2   | Switch 2           | {true,false}                         |
 | 9   | Countdown Switch 1 | 0-86400 s                            |
 | 10  | Countdown Switch 2 | 0-86400 s                            |
 | 17  | Add Electricity*   | 0-50000 kWh                          |
@@ -262,13 +262,13 @@ Source: 🔗 https://pypi.org/project/tinytuya/
 
 | DP ID | Function Point     | Type    | Range Units                   |
 | ----- | ------------------ | ------- | ----------------------------- |
-| 1     | Switch 1           | bool    | True/False                    |
-| 2     | Switch 2           | bool    | True/False                    |
-| 3     | Switch 3           | bool    | True/False                    |
-| 4     | Switch 4           | bool    | True/False                    |
-| 5     | Switch 5           | bool    | True/False                    |
-| 6     | Switch 6           | bool    | True/False                    |
-| 7     | Switch 7/usb       | bool    | True/False                    |
+| 1     | Switch 1           | bool    | {true,false}                  |
+| 2     | Switch 2           | bool    | {true,false}                  |
+| 3     | Switch 3           | bool    | {true,false}                  |
+| 4     | Switch 4           | bool    | {true,false}                  |
+| 5     | Switch 5           | bool    | {true,false}                  |
+| 6     | Switch 6           | bool    | {true,false}                  |
+| 7     | Switch 7/usb       | bool    | {true,false}                  |
 | 9     | Countdown 1        | integer | 0-86400 s                     |
 | 10    | Countdown 2        | integer | 0-86400 s                     |
 | 11    | Countdown 3        | integer | 0-86400 s                     |
@@ -287,9 +287,9 @@ Source: 🔗 https://pypi.org/project/tinytuya/
 | 25    | Electricity coeff. | integer | 0-1000000                     |
 | 26    | Fault              | fault   | ov_cr                         |
 | 38    | Power-on state     | setting | enum { off, on, memory }      |
-| 39    | Overcharge Switch  | bool    | True/False                    |
+| 39    | Overcharge Switch  | bool    | {true,false}                  |
 | 40    | Indicator status   | setting | enum { none, on, relay, pos } |
-| 41    | Child Lock         | bool    | True/False                    |
+| 41    | Child Lock         | bool    | {true,false}                  |
 | 42    | UNKNOWN            |         |                               |
 | 43    | UNKNOWN            |         |                               |
 | 44    | UNKNOWN            |         |                               |
