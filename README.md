@@ -253,7 +253,7 @@ Advertised as **SWITCH2**
 
 ## Neve X RFW Wireless Chronothermostat
 
-> [Neve X RFW](media/neve_xrfw.webp): Wifi enabled wireless chronothermostat
+> [Neve X RFW](media/neve_xrfw.webp): Wifi enabled wireless chronothermostat  
 Platform: `climate`
 
 | DP  | Description                 | Value                                   | LocalTuya configuration                                              |
