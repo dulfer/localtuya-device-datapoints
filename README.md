@@ -251,6 +251,31 @@ Advertised as **SWITCH2**
 }
 ```
 
+## Neve X RFW Wireless Chronothermostat
+
+> [Neve X RFW](media/neve_xrfw.webp): Wifi enabled wireless chronothermostat
+Platform: `climate`
+
+| DP  | Description                 | Value                              | LocalTuya configuration           |
+| --- | --------------------------- | ---------------------------------- | --------------------------------- |
+| 1   | Switch                      | {true,false}                       | HVAC Mode DP (optional)           |
+| 2   | Mode                        | {manual, auto, temporary, holiday} | Presets DP (optional)             |
+| 3   | Working status              | {shutdown, heating}                | HVAC Current Action DP (optional) |
+| 16  | Set temperature             | 0-1000000                          | Target Temperature                |
+| 24  | Current temperature         | 0-1000000                          | Current Temperature               |
+| 27  | Temperature calibration     | 0-1000000                          | N/A                               |
+| 32  | Holiday temperature         | N/A                                | N/A                               |
+| 33  | Holiday mode days setting   | 0-3                                | N/A                               |
+| 37  | Week program                | {string}                           | N/A                               |
+| 39  | Reset factory settings      | N/A                                | N/A                               |
+| 40  | Child lock                  | {true,false}                       | N/A                               |
+| 42  | Remaining time              | {time in minutes}                  | N/A                               |
+| 45  | Fault alarm                 | N/A                                | N/A                               |
+| 101 | Temporary time              | {time in minutes}                  | N/A                               |
+| 102 | Total Start-Up Time         | {time in minutes}                  | N/A                               |
+| 103 | Antifreeze temperature      | 0-1000000                          | N/A                               |
+| 104 | Fine temperature adjustment | 0-1000000                          | N/A                               |
+
 ---
 
 ## Tuya v3.3 DPs
