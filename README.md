@@ -9,6 +9,9 @@ Early 2023, adding/configuring Tuya devices in the Home Assistant [LocalTuya](ht
 
 These properties do not advertise themselves as a friendly name or data type, but as numbers. Finding what property these DPs represent is quite cumbersome, hence I created this repo to remind me of this process and also include the DPs for several of my Tuya devices to save future me from having to look them up (again).
 
+> **2023-09-13**:
+> Included a table containing DPs for Tuya compatible NEVE X RFW2 Chronothermostat. Credit [🔗@antonionardella](https://github.com/antonionardella/)
+
 > **2023-01-04**:
 > I found and included a table containing known [🔗DPs for Tuya v3.3 devices](#tuya-v33-dps)
 
