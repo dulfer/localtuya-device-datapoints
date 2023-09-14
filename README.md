@@ -9,6 +9,9 @@ Early 2023, adding/configuring Tuya devices in the Home Assistant [LocalTuya](ht
 
 These properties do not advertise themselves as a friendly name or data type, but as numbers. Finding what property these DPs represent is quite cumbersome, hence I created this repo to remind me of this process and also include the DPs for several of my Tuya devices to save future me from having to look them up (again).
 
+> **2023-09-13**:
+> Included a table containing DPs for Tuya compatible NEVE X RFW2 Chronothermostat. Credit [🔗@antonionardella](https://github.com/antonionardella/)
+
 > **2023-01-04**:
 > I found and included a table containing known [🔗DPs for Tuya v3.3 devices](#tuya-v33-dps)
 
@@ -250,6 +253,31 @@ Advertised as **SWITCH2**
   }
 }
 ```
+
+## Neve X RFW Wireless Chronothermostat
+
+> [Neve X RFW](media/neve_xrfw.webp): Wifi enabled wireless chronothermostat
+> Platform: `climate`
+
+| DP  | Description                 | Value                                   | LocalTuya configuration                                              |
+| --- | --------------------------- | --------------------------------------- | -------------------------------------------------------------------- |
+| 1   | Switch                      | {true,false}                            | N/A                                                                  | 
+| 2   | Mode                        | {"manual","auto","temporary","holiday"} | HVAC Mode DP + HVAC Mode Set: manual/auto                            | 
+| 3   | Working status              | {"off","heat","antifreeze"}             | HVAC Current ACtion DP + HVAC Current Action Set: heating/no_heating |
+| 16  | Set temperature             | 0-1000000                               | Target Temperature                                                   |
+| 24  | Current temperature         | 0-1000000                               | Current Temperature                                                  |
+| 27  | Temperature calibration     | 0-1000000                               | N/A                                                                  |
+| 32  | Holiday temperature         | N/A                                     | N/A                                                                  |
+| 33  | Holiday mode days setting   | 0-3                                     | N/A                                                                  |
+| 37  | Week program                | *complex datamodel*                     | N/A                                                                  |
+| 39  | Reset factory settings      | {true,false}                            | N/A                                                                  |
+| 40  | Child lock                  | {true,false}                            | N/A                                                                  |
+| 42  | Remaining time              | 0-1440                                  | N/A                                                                  |
+| 45  | Fault alarm                 | N/A                                     | N/A                                                                  |
+| 101 | Temporary time              | 0-1440                                  | N/A                                                                  |
+| 102 | Total Start-Up Time         | 0-1440                                  | N/A                                                                  |
+| 103 | Antifreeze temperature      | 0-1000000                               | N/A                                                                  |
+| 104 | Fine temperature adjustment | 0-1000000                               | N/A                                                                  |
 
 ---
 
